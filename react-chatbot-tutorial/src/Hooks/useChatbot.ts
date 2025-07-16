@@ -25,7 +25,7 @@ const useChatbot= ()=> {
                 {
                         headers:{
                         'Content-Type': 'application/json',
-                        Authorization:"Bearer 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"
+                        // Authorization:"Bearer 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"
                     }
             }
             );
