@@ -4,6 +4,7 @@ import Table from 'react-bootstrap/Table';
 
 function Users(){
     const [data,setData]=useState([]);
+    const [mode, setMode]=useState('online');
 
     useEffect(()=>{
         const url='https://jsonplaceholder.typicode.com/users';
@@ -11,12 +12,21 @@ function Users(){
             response.json().then((result)=>{
                 console.log(result);
                 setData(result);
+                localStorage.setItem("users",JSON.stringify(result))
+            }).catch((error)=>{
+                alert("you are in offline mode")
+                setMode('offline')
+                // let collection=localStorage.getItem("users");
+                // setData(JSON.parse(collection))
             })
         })
 
     },[])
     return(
         <div>
+            {mode==="offline"?<div class="alert alert-light" role="alert">
+  you are in offline mode
+</div>:null}
             <Table>
       <thead>
         <tr>
